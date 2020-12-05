@@ -1,19 +1,26 @@
 import React from 'react';
 
-class ContentDisplay extends React.Component{
+class ContentDisplay extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            data :props.resultData
+        };
+    }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="row">
                 <div className="column">
-                    <h2>Column 1</h2>
-                    <p>Some text..</p>
+                    {this.state.data.bindings.map(each => {
+    return <p key={each.PaperTitle.value}>{each.PaperTitle.value}</p>
+                    })}
                 </div>
-                <div className="column">
+                {/* <div className="column">
                     <h2>Column 2</h2>
                     <p>Some text..</p>
-                </div>
-            </div> 
+                </div> */}
+            </div>
         );
     }
 }
