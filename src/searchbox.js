@@ -24,7 +24,7 @@ class NameForm extends React.Component {
     this.setState({ value: event.target.value });
   }
 
-  matchTopic = () => this.state.tokens.filter(s => s.id.includes(this.state.value))
+  matchTopic = () => this.state.tokens.filter(s => (this.state.value.split(' ')[0] || this.state.value.split(' ')[1]).includes(s.id) || s.id.includes(this.state.value.split(' ')[0] || this.state.value.split(' ')[1]))
 
     handleClick = (event) => {
     event.preventDefault();
@@ -53,6 +53,7 @@ class NameForm extends React.Component {
       value : event.target.childNodes[1].value
     })
     var topicObject = this.matchTopic() //Get from tokens
+    console.log(topicObject)
     var topicNumber = topicObject[0].value
     console.log(topicNumber);
     if (topicNumber === '0') {
@@ -104,6 +105,9 @@ class NameForm extends React.Component {
           <input id="search" type="search" placeholder="Search Topic..." autoFocus required />
           <button type="submit">Go</button>
         </form>
+      </div>
+      <div>
+        <h1>Search result</h1>
       </div>
       <div>
         {(this.state.result) ? <ContentDisplay resultData={this.state.result}/> : <div></div>}

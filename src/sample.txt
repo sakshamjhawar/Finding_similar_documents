@@ -3,6 +3,7 @@
 "queri" ,0
 "use" ,0
 "system" ,0
+"cybersecur" ,0
 "web" ,0
 "applic" ,0
 "process" ,0
@@ -62,7 +63,6 @@
 "paper" ,0
 "model" ,0
 "describ" ,0
-"distribut" ,0
 "perform" ,0
 "evalu" ,0
 "cours" ,0
@@ -74,7 +74,6 @@
 "real" ,0
 "allow" ,0
 "identifi" ,0
-"state" ,0
 "follow" ,0
 "two" ,0
 "control" ,0
@@ -97,7 +96,6 @@
 "avail" ,0
 "chang",0
 "model" ,1
-"use" ,1
 "object" ,1
 "train" ,1
 "input" ,1
@@ -145,7 +143,6 @@
 "sampl" ,1
 "vector" ,1
 "follow" ,1
-"semant" ,1
 "represent" ,1
 "repres" ,1
 "size" ,1
@@ -189,7 +186,6 @@
 "see" ,1
 "case" ,1
 "defin" ,1
-"tripl" ,1
 "depend" ,1
 "ground" ,1
 "end" ,1
@@ -199,7 +195,6 @@
 "rdf" ,2
 "subject" ,2
 "properti" ,2
-"cybersecur" ,2
 "join" ,2
 "http" ,2
 "owl" ,2
