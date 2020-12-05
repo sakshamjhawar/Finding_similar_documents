@@ -9,11 +9,11 @@ class NameForm extends React.Component {
   constructor(props) {
     super(props);
     //readingFile();
-    //console.log("file is read");
     this.state = {
       value: "",
       tokens: "",
       result: "",
+      topicNum: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,7 +37,10 @@ class NameForm extends React.Component {
 
   handleClick = (event) => {
     event.preventDefault();
-    this.setState({ result: "" });
+    this.setState({ 
+      result: "",
+      topicNum: ""
+   });
     fetch(myText)
       .then((r) => r.text())
       .then((text) => {
@@ -55,7 +58,6 @@ class NameForm extends React.Component {
         });
       })
       .then(() => {
-        console.log(event);
         this.handleSubmit(event);
       });
   };
@@ -66,9 +68,16 @@ class NameForm extends React.Component {
       value: event.target.childNodes[1].value,
     });
     var topicObject = this.matchTopic(); //Get from tokens
-    console.log(topicObject);
-    var topicNumber = topicObject[0].value;
-    console.log(topicNumber);
+    var topicNumber = ""
+    if(topicObject[0]) {
+      topicNumber = topicObject[0].value;
+    }
+    else {
+      topicNumber = "";
+    }
+    this.setState({
+      topicNum : topicNumber
+    });
     if (topicNumber === "0") {
       axios({
         method: "POST",
@@ -130,18 +139,28 @@ class NameForm extends React.Component {
         <div className="row">
           <div className="column">
             <div>
-              <h1>Search result:</h1>
-            </div>
-            <div>
-              {this.state.result ? (
-                <ContentDisplay resultData={this.state.result} />
-              ) : (
-                <div></div>
-              )}
+              { this.state.result && this.state.topicNum  ? (
+                <div>
+                  <h1>Search result:</h1>
+                  <ContentDisplay resultData={this.state.result} />
+                </div>
+              ) :
+                <div><h2>Sorry, no relevant documents found!</h2></div>
+              }
             </div>
           </div>
           <div className="column">
-            <p>Second Column</p>
+            {this.state.result && this.state.topicNum ? (
+              <div>
+                <h2>Info Box:</h2><br/>
+                <p>Main Topic Matched: {this.state.topicNum === "0" ? 'Cyber Security' : this.state.topicNum === "1" ? 'Machine Learning' : 'Web Semantics'}</p>
+                <p>Total Matched Documents : {this.state.result.bindings.length}</p>
+              </div>
+              ) : (
+              <div></div>
+              )}
+
+            
           </div>
         </div>
       </div>
