@@ -130,7 +130,7 @@ class NameForm extends React.Component {
         <div className="row">
           <div className="column">
             <div>
-              <h1>Search result</h1>
+              <h1>Search result:</h1>
             </div>
             <div>
               {this.state.result ? (
